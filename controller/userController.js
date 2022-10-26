@@ -12,12 +12,12 @@ exports.index = async (req, res, next) => {
 
 exports.register = async (req, res, next) => {
   const { username, password } = req.body;
-  const users = new User({
+  const user = new User({
     username: username,
     password: password,
   });
 
-  await users.save();
+  await user.save();
 
   res.status(201).json({
     message: "Successfuyl registered",
