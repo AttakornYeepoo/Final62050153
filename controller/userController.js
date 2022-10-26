@@ -12,12 +12,12 @@ exports.index = async (req, res, next) => {
 
 exports.register = async (req, res, next) => {
   const { username, password } = req.body;
-  const user = new User({
+  const users = new User({
     username: username,
     password: password,
   });
 
-  await user.save();
+  await users.save();
 
   res.status(201).json({
     message: "Successfuyl registered",
@@ -56,5 +56,9 @@ exports.login = async (req, res, next) => {
     expires_in: expires_in.exp,
     token_type: "Bearer",
     data: user,
+  });
+
+  res.status(200).json({
+    message: "Successfuyl login",
   });
 };
